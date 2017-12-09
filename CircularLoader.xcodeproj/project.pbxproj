@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		EF9F01F31FDC43A90027D7E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9F01F21FDC43A90027D7E4 /* AppDelegate.swift */; };
 		EF9F01F51FDC43A90027D7E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9F01F41FDC43A90027D7E4 /* ViewController.swift */; };
-		EF9F01F81FDC43A90027D7E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF9F01F61FDC43A90027D7E4 /* Main.storyboard */; };
 		EF9F01FA1FDC43A90027D7E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF9F01F91FDC43A90027D7E4 /* Assets.xcassets */; };
 		EF9F01FD1FDC43A90027D7E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF9F01FB1FDC43A90027D7E4 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -18,7 +17,6 @@
 		EF9F01EF1FDC43A80027D7E4 /* CircularLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CircularLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF9F01F21FDC43A90027D7E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF9F01F41FDC43A90027D7E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EF9F01F71FDC43A90027D7E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EF9F01F91FDC43A90027D7E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF9F01FC1FDC43A90027D7E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF9F01FE1FDC43A90027D7E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,7 +54,6 @@
 			children = (
 				EF9F01F21FDC43A90027D7E4 /* AppDelegate.swift */,
 				EF9F01F41FDC43A90027D7E4 /* ViewController.swift */,
-				EF9F01F61FDC43A90027D7E4 /* Main.storyboard */,
 				EF9F01F91FDC43A90027D7E4 /* Assets.xcassets */,
 				EF9F01FB1FDC43A90027D7E4 /* LaunchScreen.storyboard */,
 				EF9F01FE1FDC43A90027D7E4 /* Info.plist */,
@@ -125,7 +122,6 @@
 			files = (
 				EF9F01FD1FDC43A90027D7E4 /* LaunchScreen.storyboard in Resources */,
 				EF9F01FA1FDC43A90027D7E4 /* Assets.xcassets in Resources */,
-				EF9F01F81FDC43A90027D7E4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,14 +140,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EF9F01F61FDC43A90027D7E4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EF9F01F71FDC43A90027D7E4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EF9F01FB1FDC43A90027D7E4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -275,6 +263,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DBD2DBFKN6;
 				INFOPLIST_FILE = CircularLoader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.denmathew.CircularLoader;
@@ -289,6 +278,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DBD2DBFKN6;
 				INFOPLIST_FILE = CircularLoader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.denmathew.CircularLoader;
