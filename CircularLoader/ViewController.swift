@@ -8,7 +8,20 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, URLSessionDownloadDelegate {
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        
+        let progressPercentage = CGFloat(100 * totalBytesWritten/totalBytesExpectedToWrite)
+        DispatchQueue.main.async {
+            self.progressLabel.text = "\(Int(progressPercentage))" + "%"
+            self.shapelayer.strokeEnd = progressPercentage/100
+            print(progressPercentage)
+        }
+    }
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        print("Finished Downloading File!")
+    }
     
     let shapelayer = CAShapeLayer()
     let progressLabel: UILabel = {
@@ -20,6 +33,8 @@ class ViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    let urlString = "http://mirrors.standaloneinstaller.com/video-sample/lion-sample.m4v"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +47,8 @@ class ViewController: UIViewController {
     }
     
     fileprivate func createProgressView() {
-        let center = view.center
-        let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi/2, endAngle: 2 * CGFloat.pi, clockwise: true)
+//        let center = view.center
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 100, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         
         //Track Layer
         let trackLayer = CAShapeLayer()
@@ -43,6 +58,7 @@ class ViewController: UIViewController {
         trackLayer.strokeEnd = 1
         trackLayer.lineCap = kCALineCapRound
         trackLayer.fillColor = UIColor.clear.cgColor
+        trackLayer.position = view.center
         
         view.layer.addSublayer(trackLayer)
         
@@ -53,6 +69,8 @@ class ViewController: UIViewController {
         shapelayer.strokeEnd = 0
         shapelayer.lineCap = kCALineCapRound
         shapelayer.fillColor = UIColor.clear.cgColor
+        shapelayer.position = view.center
+        shapelayer.transform = CATransform3DMakeRotation(-CGFloat.pi/2, 0, 0, 1)
         
         view.layer.addSublayer(shapelayer)
     }
@@ -65,16 +83,35 @@ class ViewController: UIViewController {
             ])
     }
     
-    @objc private func handleTap() {
-        print("Animate It!")
+    private func beginDownloadingFile() {
+        print("Downloading File...")
+        shapelayer.strokeEnd = 0
         
+        //Download File
+        let configuration = URLSessionConfiguration.default
+        let operationQueue = OperationQueue()
+        let urlSession = URLSession(configuration: configuration, delegate: self, delegateQueue: operationQueue)
+        
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        let downloadTask = urlSession.downloadTask(with: url)
+        downloadTask.resume()
+    }
+    
+    fileprivate func animateCircle(_ toValue: Double) {
         let viewAnimation = CABasicAnimation(keyPath: "strokeEnd")
         viewAnimation.toValue = 1
-        viewAnimation.duration = 2
+        viewAnimation.duration = toValue
         viewAnimation.fillMode = kCAFillModeForwards
         viewAnimation.isRemovedOnCompletion = false
         
         shapelayer.add(viewAnimation, forKey: "urSoBasic")
+    }
+    
+    @objc private func handleTap() {
+        print("Animate It!")
+        beginDownloadingFile()
     }
 
     override func didReceiveMemoryWarning() {
